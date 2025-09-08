@@ -2,6 +2,7 @@ import { Sales } from "./Sales.js"
 import { EntreeOptions } from "./Entrees.js"
 import { sideOptions } from "./SideDishes.js"
 import { veggiesOptions } from "./Vegetables.js"
+import { handleOrderSubmission } from "./orderComboButton.js"
 
 export const FoodTruck = async () => {
     const salesHTML = await Sales()
@@ -37,3 +38,5 @@ export const FoodTruck = async () => {
             ${salesHTML}
         </article>`
 }
+
+ document.addEventListener("click", handleOrderSubmission)

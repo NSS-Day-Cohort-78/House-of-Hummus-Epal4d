@@ -10,8 +10,7 @@ const entreeChoiceHandler = (changeEvnt) => {
 
 export const EntreeOptions = async () => {
     const entrees = await fetch ("http://localhost:8088/entrees").then(res => res.json())
-    document.addEventListener("change", entreeChoiceHandler)
-
+    
     let html = `
         <div class= 'customer-input'> 
         <h3> What entree would you like </h3>
@@ -32,4 +31,8 @@ html += divStringArray.join("")
 html += `</div>`
 
     return html 
+}
+export const addEntreeListener = () => {
+    document.removeEventListener("change", entreeChoiceHandler)  // Remove old
+    document.addEventListener("change", entreeChoiceHandler)     // Add new
 }

@@ -1,9 +1,9 @@
-import { setEntreeId } from "./TransientState.js"
+import { setVegetableId } from "./TransientState.js"
 
 const vegetableChoiceHandler = (changeEvnt) => {
     if (changeEvnt.target.name === "vegetable") {
         const vegetableId = parseInt(changeEvnt.target.value)
-        setEntreeId(vegetableId)
+        setVegetableId(vegetableId)
         
     }
 }
@@ -26,4 +26,7 @@ export const veggiesOptions = async () => {
     html += divStringArray.join("")
     html += `</div>`
     return html
+}
+export const addVegetableListeners = () => {
+    document.addEventListener("change", vegetableChoiceHandler)
 }

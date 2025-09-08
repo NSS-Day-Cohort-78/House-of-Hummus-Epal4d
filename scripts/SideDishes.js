@@ -9,7 +9,6 @@ const sideChoiceHandler = (changeEvnt) => {
 export const sideOptions = async () => {
     const response = await fetch ("http://localhost:8088/sides")
     const sides = await response.json();
-    document.addEventListener("change", sideChoiceHandler)
     let html = `
         <div class= 'customer-input'> 
         <h3> What side would you like </h3>
@@ -31,4 +30,7 @@ html += `</div>`
 
     return html 
 }
-
+export const addSideListeners = () => {
+    document.removeEventListener("change", sideChoiceHandler)  // Remove old
+    document.addEventListener("change", sideChoiceHandler)     // Add new
+}
