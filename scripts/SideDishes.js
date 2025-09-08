@@ -1,8 +1,15 @@
+import { setSideId } from "./TransientState.js"
 
+const sideChoiceHandler = (changeEvnt) => {
+    if (changeEvnt.target.name === "side") {
+        const sideId = parseInt(changeEvnt.target.value)
+        setSideId(sideId)
+    }
+}
 export const sideOptions = async () => {
     const response = await fetch ("http://localhost:8088/sides")
     const sides = await response.json();
-
+    document.addEventListener("change", sideChoiceHandler)
     let html = `
         <div class= 'customer-input'> 
         <h3> What side would you like </h3>

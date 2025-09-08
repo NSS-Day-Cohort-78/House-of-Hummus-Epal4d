@@ -1,6 +1,16 @@
+import { setEntreeId } from "./TransientState.js"
+
+const entreeChoiceHandler = (changeEvnt) => {
+    if (changeEvnt.target.name === "entree") {
+        const entreeId = parseInt(changeEvnt.target.value)
+        setEntreeId(entreeId)
+        
+    }
+}
+
 export const EntreeOptions = async () => {
     const entrees = await fetch ("http://localhost:8088/entrees").then(res => res.json())
-    
+    document.addEventListener("change", entreeChoiceHandler)
 
     let html = `
         <div class= 'customer-input'> 
