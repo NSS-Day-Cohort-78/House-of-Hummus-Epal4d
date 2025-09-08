@@ -1,6 +1,6 @@
 export const EntreeOptions = async () => {
-    const response = await fetch ("http://localhost:8088/entrees")
-    const entrees = await response.json();
+    const entrees = await fetch ("http://localhost:8088/entrees").then(res => res.json())
+    
 
     let html = `
         <div class= 'customer-input'> 
@@ -13,11 +13,13 @@ export const EntreeOptions = async () => {
 const divStringArray = entrees.map(
     (entree) => {
         return `<div> 
-            <input type ='radio' name='entree' value='${entree.id}' /> ${entree.name} -- $${entree.price}` 
+            <input type ='radio' name='entree' value='${entree.id}' /> ${entree.name} -- $${entree.price}
+            </div>`
         }
     )
 
 html += divStringArray.join("")
+html += `</div>`
 
     return html 
 }

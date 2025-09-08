@@ -1,3 +1,4 @@
+
 export const sideOptions = async () => {
     const response = await fetch ("http://localhost:8088/sides")
     const sides = await response.json();
@@ -13,11 +14,13 @@ export const sideOptions = async () => {
 const divStringArray = sides.map(
     (side) => {
         return `<div> 
-            <input type ='radio' name='side' value='${side.id}' /> ${side.title} -- $${side.price}` 
+            <input type ='radio' name='side' value='${side.id}' /> ${side.title} -- $${side.price}
+            </div>` 
         }
     )
 
 html += divStringArray.join("")
+html += `</div>`
 
     return html 
 }
